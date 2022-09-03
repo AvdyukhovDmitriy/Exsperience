@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package transport_catalogue_proto;
+
+message Edge {
+	uint32 from = 1;
+	uint32 to = 2;
+	double weight = 3;
+}
+
+message IncidenceList {
+	repeated uint32 edge_id = 1;
+}
+
+message Graph {
+	repeated Edge edges = 1;
+	repeated IncidenceList inclidence_lists = 2;
+}
+message Prev_dge{
+	uint32 prev_dge = 1;
+	bool flag = 3;
+}
+message RouterInternalData{
+	double weigth = 1;
+	Prev_dge prev = 2;
+	bool flag = 3;
+}
+
+message VectorRouterInternalData {
+	repeated RouterInternalData data = 1;
+}
+
+message Router {
+	repeated VectorRouterInternalData router_data = 1;
+}
